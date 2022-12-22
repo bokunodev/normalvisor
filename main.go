@@ -65,12 +65,12 @@ func main() {
 				})
 		}
 
-		v, err := visor.New(ctx.Context)
+		v := visor.New(ctx.Context)
+
+		err := v.Supervise("/home/boku/Public/normalvisor/daemon/daemon", "", "", "", "", nil, nil)
 		if err != nil {
 			return err
 		}
-
-		v.Supervise("/home/boku/Public/normalvisor/daemon/daemon", "", "", "", "", false, nil, nil)
 
 		return v.Run()
 	}
